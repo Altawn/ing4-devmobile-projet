@@ -58,32 +58,31 @@ class Product {
       picture: json['pictures']?['front'] as String?,
       quantity: json['quantity'] as String?,
       brands: (json['brands'] as List<dynamic>?)?.cast<String>(),
-      manufacturingCountries:
-          (json['manufacturingCountries'] as List<dynamic>?)?.cast<String>(),
+      manufacturingCountries: (json['manufacturingCountries'] as List<dynamic>?)
+          ?.cast<String>(),
       nutriScore: _parseNutriScore(json['nutriScore']),
       nutriScoreLevels: json['levels'] != null
           ? ProductNutriScoreLevels.fromJson(json['levels'])
           : null,
       novaScore: _parseNovaScore(json['novaScore']),
       greenScore: _parseGreenScore(json['ecoScoreGrade']),
-      ingredients:
-          (json['ingredients']?['list'] as List<dynamic>?)?.cast<String>(),
+      ingredients: (json['ingredients']?['list'] as List<dynamic>?)
+          ?.cast<String>(),
       ingredientsWithAllergens:
           json['ingredients']?['withAllergens'] as String?,
       traces: (json['traces']?['list'] as List<dynamic>?)?.cast<String>(),
       allergens: (json['allergens']?['list'] as List<dynamic>?)?.cast<String>(),
-      additives: (json['additives'] as Map<String, dynamic>?)
-          ?.map((key, value) => MapEntry(key, value as String)),
+      additives: (json['additives'] as Map<String, dynamic>?)?.map(
+        (key, value) => MapEntry(key, value as String),
+      ),
       nutrientLevels: json['nutrientLevels'] != null
           ? NutrientLevels.fromJson(json['nutrientLevels'])
           : null,
       nutritionFacts: json['nutritionFacts'] != null
           ? NutritionFacts.fromJson(json['nutritionFacts'])
           : null,
-      ingredientsFromPalmOil:
-          json['ingredients']?['containsPalmOil'] as bool?,
-      containsPalmOil:
-          ProductAnalysis.fromString(json['analysis']?['palmOil']),
+      ingredientsFromPalmOil: json['ingredients']?['containsPalmOil'] as bool?,
+      containsPalmOil: ProductAnalysis.fromString(json['analysis']?['palmOil']),
       isVegan: ProductAnalysis.fromString(json['analysis']?['vegan']),
       isVegetarian: ProductAnalysis.fromString(json['analysis']?['vegetarian']),
     );
@@ -169,11 +168,13 @@ class NutritionFacts {
       proteins: json['proteins'] != null
           ? Nutriment.fromJson(json['proteins'])
           : null,
-      sodium:
-          json['sodium'] != null ? Nutriment.fromJson(json['sodium']) : null,
+      sodium: json['sodium'] != null
+          ? Nutriment.fromJson(json['sodium'])
+          : null,
       salt: json['salt'] != null ? Nutriment.fromJson(json['salt']) : null,
-      energy:
-          json['energy'] != null ? Nutriment.fromJson(json['energy']) : null,
+      energy: json['energy'] != null
+          ? Nutriment.fromJson(json['energy'])
+          : null,
     );
   }
 }
@@ -357,7 +358,7 @@ Product generateProduct() => Product(
     'extrait naturel de vanille',
   ],
   ingredientsWithAllergens:
-      'Sucre, sirop de glucose, <span class=\"allergen\">lait</span> écrémé, crème légère (<span class=\"allergen\">lait</span>), eau, beurre de cacao, matière grasse de noix de coco, <span class=\"allergen\">lait</span> écrémé concentré sucré, pâte de cacao, farine de <span class=\"allergen\">blé</span>, matière grasse de palme, <span class=\"allergen\">lait</span> écrémé en poudre, <span class=\"allergen\">lactose</span>, matière grasse du <span class=\"allergen\">lait</span>, huile de palmiste, petit-<span class=\"allergen\">lait</span> en poudre, cacao maigre, <span class=\"allergen\">beurre</span> (<span class=\"allergen\">lait</span>), émulsifiants (lécithine de <span class=\"allergen\">soja</span>, E471, tristéarate de sorbitane), <span class=\"allergen\">lait</span> entier en poudre, stabilisants (E407, E410, E412), arômes naturels (<span class=\"allergen\">lait</span>), sel, colorant naturel (caramel ordinaire), cacao en poudre, poudre à lever (E503), extrait naturel de vanille. (Peut contenir<span class=\"allergen\">: cacahuète</span>, <span class=\"allergen\">noisette</span>, <span class=\"allergen\">amande</span>).',
+      'Sucre, sirop de glucose, <span class="allergen">lait</span> écrémé, crème légère (<span class="allergen">lait</span>), eau, beurre de cacao, matière grasse de noix de coco, <span class="allergen">lait</span> écrémé concentré sucré, pâte de cacao, farine de <span class="allergen">blé</span>, matière grasse de palme, <span class="allergen">lait</span> écrémé en poudre, <span class="allergen">lactose</span>, matière grasse du <span class="allergen">lait</span>, huile de palmiste, petit-<span class="allergen">lait</span> en poudre, cacao maigre, <span class="allergen">beurre</span> (<span class="allergen">lait</span>), émulsifiants (lécithine de <span class="allergen">soja</span>, E471, tristéarate de sorbitane), <span class="allergen">lait</span> entier en poudre, stabilisants (E407, E410, E412), arômes naturels (<span class="allergen">lait</span>), sel, colorant naturel (caramel ordinaire), cacao en poudre, poudre à lever (E503), extrait naturel de vanille. (Peut contenir<span class="allergen">: cacahuète</span>, <span class="allergen">noisette</span>, <span class="allergen">amande</span>).',
   traces: ['cacahuète', 'noisette', 'amande'],
   allergens: ['lait', 'soja', 'beurre'],
   additives: {'e322i': 'Description', 'e471': 'Description'},

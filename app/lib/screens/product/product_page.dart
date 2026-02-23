@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:formation_flutter/res/app_icons.dart';
 import 'package:formation_flutter/screens/product/product_fetcher.dart';
+import 'package:formation_flutter/screens/product/recall_fetcher.dart';
 import 'package:formation_flutter/screens/product/states/empty/product_page_empty.dart';
 import 'package:formation_flutter/screens/product/states/error/product_page_error.dart';
 import 'package:formation_flutter/screens/product/states/success/product_page_body.dart';
@@ -17,8 +18,15 @@ class ProductPage extends StatelessWidget {
     final MaterialLocalizations materialLocalizations =
         MaterialLocalizations.of(context);
 
-    return ChangeNotifierProvider<ProductFetcher>(
-      create: (_) => ProductFetcher(barcode: barcode),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<ProductFetcher>(
+          create: (_) => ProductFetcher(barcode: barcode),
+        ),
+        ChangeNotifierProvider<RecallFetcher>(
+          create: (_) => RecallFetcher(barcode: barcode),
+        ),
+      ],
       child: Scaffold(
         backgroundColor: Colors.white,
         body: Stack(
@@ -32,6 +40,68 @@ class ProductPage extends StatelessWidget {
                   ),
                   ProductFetcherSuccess() => ProductPageBody(),
                 };
+              },
+            ),
+            // Bannière de rappel produit
+            Consumer<RecallFetcher>(
+              builder: (context, recallNotifier, _) {
+                final state = recallNotifier.state;
+                if (state is! RecallFetcherFound)
+                  return const SizedBox.shrink();
+
+                return Positioned(
+                  bottom: 80.0,
+                  left: 16.0,
+                  right: 16.0,
+                  child: Material(
+                    elevation: 6.0,
+                    borderRadius: BorderRadius.circular(12.0),
+                    color: Colors.red.shade700,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16.0,
+                        vertical: 12.0,
+                      ),
+                      child: Row(
+                        children: [
+                          const Icon(
+                            Icons.warning_amber_rounded,
+                            color: Colors.white,
+                            size: 28.0,
+                          ),
+                          const SizedBox(width: 12.0),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                const Text(
+                                  '⚠️ Rappel produit',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 14.0,
+                                  ),
+                                ),
+                                Text(
+                                  state.recall.motif.isNotEmpty
+                                      ? state.recall.motif
+                                      : state.recall.libelle,
+                                  style: const TextStyle(
+                                    color: Colors.white70,
+                                    fontSize: 12.0,
+                                  ),
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                );
               },
             ),
             PositionedDirectional(
