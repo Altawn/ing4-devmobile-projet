@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Ronan\Documents\GitHub\ing4-devmobile-projet\build\windows\x64\CMakeFiles\8a568c99075b3d1e42d0021505579dd1\INSTALL_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{BE02532F-6A81-360E-BD5C-63F8E393E200}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
