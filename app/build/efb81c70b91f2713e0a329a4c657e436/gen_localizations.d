@@ -1,0 +1,1 @@
+ C:\\Users\\Ronan\\Documents\\GitHub\\ing4-devmobile-projet\\app\\lib\\l10n\\app_localizations_fr.dart C:\\Users\\Ronan\\Documents\\GitHub\\ing4-devmobile-projet\\app\\lib\\l10n\\app_localizations.dart:  C:\\Users\\Ronan\\Documents\\GitHub\\ing4-devmobile-projet\\app\\l10n.yaml C:\\Users\\Ronan\\Documents\\GitHub\\ing4-devmobile-projet\\app\\lib\\l10n\\app_fr.arb
